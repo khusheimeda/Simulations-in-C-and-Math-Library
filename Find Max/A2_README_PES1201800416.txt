@@ -1,0 +1,14 @@
+Data structures used: struct and array(of structures)
+
+Compile code: 
+gcc A2_PES1201800416.c
+Using math.h for log2 and pow functions	//not sure what the -lm flag is
+
+Key takeaway from this assignment:
+1. A simple problem such as finding the second largest element from the array can be approached in many ways.
+But is is hard to do it in with constraints such as a fixed number of comparisons and extra space used.
+
+2. Here, we approach it in a 'tournament-playing' method where we check elements pairwise and get the larger one. 
+Then in the set of larger elements we get the first time, we do pairwise comparison again. 
+We do this until we get a single greatest element.All this is done in log(n) - 1 comparisons.
+Then in n-1 comparisons, we get the second largest elements among the list of elements that have lost to the max element.

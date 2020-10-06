@@ -1,0 +1,39 @@
+Allocation policy- Worst-fit. So it searches for the largest available free block and allocates memory from it.
+
+Explanation of bookkeeping structure- My implementation uses a structure to hold the details of a block of memory. The details maintained are-
+size of the block, status variable to hold whether the block is allocated memory or free memory (1 or 0 respectively), and a pointer to the next block structure.
+The blocks are connected as a linked list.
+
+Basic logic used-
+1. allocate()- 
+*This allocates the entire memory space requested by the user. 
+*It initializes a head pointer pointing to default book-keeping structure which is created when this function is called, and another pointer to the beginning of the remaining free space. The second pointer is used only in allocate function as a location that head->next points to; it has no other purpose.
+
+2. mymalloc()- 
+*This function searches for the largest free block which can accomodate the user requested bytes.
+*If found, it creates a single block of size as that requested by the user+ sizeof of the book-keeping structure, if possible. 
+And this block points the updated remaining free space.
+*If the free space can accomodate only user requested number of bytes but not bookkeping structure, we allocate even the remaining free bytes, i.e, more space than actually requested by user. 
+A pre-existing bookkeeping record can be updated to maintain the details of this newly allocated space.
+*Since every book-keeping structure occurs next to its allocated memory, we can have a single structure of their combined size as the block and display them distinguishedly in the display_mem_block() function.
+But if the book-keeping structure would not have to necessarily occur next to the block, or if we wanted to have separate structures for allocated memory and book-keeping structure, we'd have to have another status symbol(like 2) to identify book-keeping blocks.
+
+3. myfree()- 
+*We search for the block pointed by 'b' pointer, while simultaneously searching for any previously adjacent free blocks. 
+*If found, we mark its status as 0. 
+*If a previously adjacent free block is found, we merge the new free block to the previous one along with the book-keeping record of the previous block.  
+*Conditional check to see if there's a free block after the newly freed block, (eg: a,b,c are allocated blocks in that order. First a is freed, then c, and then b. When b is freed, not only does it have to be merged with a, but also with c), and if found, repeat the loop for merging after updating the pointers.
+
+4. print_book()- 
+*To print size of single book keeping structure. We print size of default head book-keeping structure created when allocate was called.
+
+5. display_mem_map()- 
+*A counter variable to keep track of starting address. 
+*Iterate through linked list and check its status.
+If 1, print (its size field)-(sizeof bookkeeping structure) as allocated and sizeof bookkeeping structure as book.
+If 0, print size field number of bytes as free.
+ 
+Key takeaway from this assignment- 
+Memory management is a critical process in C and there are many possible situations and edge cases that a memory manager takes care of to maintain the efficiency of the system.
+In the end, a programmer gets only what he deserves.
+

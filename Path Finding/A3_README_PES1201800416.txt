@@ -1,0 +1,14 @@
+Data structures used: 
+- structures used for state, node and list
+- array of function pointers to point to transition functions
+- implemented a doubly linked list of nodes
+
+To compile code:
+Create a makefile of the three files. Input to client file being given from stdin.
+
+Key takeaway from this assignment:
+A problem like this could seem very simple to understand but the implementation could get very confusing if not properly planned before coding.
+We learnt to visualise the same question in multiple ways: state space tree, and doubly linked list.
+We understood how crucial a simple concept like backtracking could be in solving such problems where the computer has to get multiple solutions based on a set of production rules.
+
+

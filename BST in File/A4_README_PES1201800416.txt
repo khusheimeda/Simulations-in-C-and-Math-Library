@@ -1,0 +1,8 @@
+Key takeaway from this assignment-
+Data structures can be implemented in memory by storing them in files, and using integer offsets to implement pointers.
+In this assignment, we have implemented Binary Search Tree in files, which cleared the concepts of insertion, deletion and traversal in BST for me, and even the concepts of file operation in C.
+The important aspect of this assignment, for me, was to think about how to structure my algorithm, because for every function, it was clear what had to be done, but it was hard to figure out how to order the steps and maintain a sense of individuality between blocks of code.
+
+Additional notes-
+Whenever I delete a key, I use its left_offset to keep track of the next free node's offset. I make the key and the right offset of the deleted node as -1, but this is, in no way going to affect the user entering an input key as -1.
+That is, I am not making any decision based on key value being -1.

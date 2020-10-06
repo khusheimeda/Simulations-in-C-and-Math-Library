@@ -1,0 +1,100 @@
+Introduction:
+An intal a long(upto 1000 digits) non-negative integer which does not have any leading zeros in its prefix.
+It is stored in a character array, i.e, as a string. 
+It is different from primitive data types supported by C because no numerical data type in C- int, float, double, long double, etc, is capable of storing and performing computations over 1000 digit long numbers.
+As we have realised from this assignment, mathematical computations involving extremely large integers can be carried out easily by implementing them as strings and doing string parsing and manipulations.
+Since this library is implemented in C using only 3 basic predefined packages (stdio.h, stdlib.h, string.h), its efficiency is totally determined by the programmer's code.
+The programmer creating this library gets to have full control over the memory usage and management in the computations.
+This is a good reason to implement such a library in C rather than other OOP languages like Java or C++ which already have many predefined libraries to simplify the programmer's task.
+
+Approach:
+The general approach towards implementation was 
+	-to keep in mind all the constraints for every function, 
+	-come up with an algorithm to implement the function subject to the constraints, 
+	-handle any errors, and then check for and fix memory leaks.
+
+intal_add: 
+	-find the shorter intal.
+	-loop through corresponding digits of intal1 and intal2 until the shorter intal is exhausted, while keeping track of sum and carry
+	-loop through remaining digits of longer intal and add it with the carry, until the string is completely traversed
+	
+intal_compare:
+	-find lengths of both intals
+	-if lengths are unequal, it is obvious which the bigger intal is. Return value accordingly
+	-in case of equal lengths, loop through the intals character by character an return a value upon mismatch accordingly.
+
+intal_diff:
+	-similar to add in the sense that there are two loops- one which handles the common length of the intals, another loop to handle the remaining part of the longer intal
+	-find difference of corresponding characters. If it is negative, add 10 to get the absolute value, and make borrow as one
+	-In the second loop, if a character encountered is 0 and there is a borrow>0 from previous comparision, 9 is stored as difference for that iteration.
+
+intal_multiply:
+	-Basic school level multiplication method used as algorithm.
+	-With left shifting of partial products.
+	-Two arrays used: partial product for product of an intal with another intal's single digit
+	, and final product to store the sum of all partial product.
+
+intal_mod:
+	-Try to bring the number of digits of intal2 close to inatl1 by multiplying by 10s.
+	-Ensure that intal2's value doesn't exceed intal1 while doing so.
+	-Do repeated subtractions until intal1>intal2.
+	-When it fails, remove 0s from intal2 which we had appended earlier until the first step condition statisfies again.
+	-Repeat the process as long as intal1>=intal2
+	-Return intal1
+
+intal_pow:
+	-Divide and conquer idea
+	-Make n into n/2 and multiply the intal with itself. If n is odd, multiply intal with the product obtained by repeated division of n.
+
+intal_gcd:
+	-Euclid's GCD algorithm.
+	-So if GCD(m, n) is to be found, until n=0, set r=m%n, m=n, n=r.
+	-Final answer is found in m
+
+intal_fibonnaci:
+	-basic idea of a=0, b=1
+	-if n>2, c=a+b, a=b, b=c
+
+intal_factorial:
+	-run a for loop from 1 to n	
+	-move in steps of 1 by keeping track of prev and next number
+	-Keep multiplying the next number with factorial which was initially initialised to 1
+
+intal_bincoeff:
+	-using sliding window of 1 row in DP
+	-1st row initialised with 0s; 1st element initialised with 1
+	-elements of the dp table are updated in the next n iterations accordingly.
+	-Start updating from rightmost part of array, since recurrence relation refers to previous and current values
+
+intal_max, intal_min, intal_search:
+	-loop through the element until required criterion is met
+	-in every case, the idea is to loop through all the elements of the array and every time, compare the ith array element with the max or min value until then, and update the max or min offset accordingly.
+	-in case of search, if a match to the key is found on comparision, the offset is returned immediately.
+
+intal_binsearch:
+	-keep dividing the arry into half and checking if middle element matches the given element or not
+	-since the arry is sorted, if the middle element doesn't match, we know in which half it could lie
+	-but since we have to first the first occurence of the key, instead of returning the offset on first match, we update the upper bound to mid-1, so that the searching continues in the left half of the array.
+
+intal_sort:	
+	-heap sort algorithm
+	-make a min heap using bottom up approach
+	-At this point, the largest item is stored at the root of the heap. Replace it with the last item of the heap followed by reducing the size of heap by 1. Finally, heapify the root of tree.
+	-Repeat above steps while size of heap is greater than 1.
+
+coin_row_problem:
+	-initially, initialise variable prev to 0 and curr to 1st element of array.
+	-run a loop from 2nd element to the last, finding optimised values for each position.
+	-used a sliding window of three elements and another temporary variable.
+	-the result is found in curr
+	
+Future work:
+It would be useful to expand intal to the category of all integers, i.e, including negative integers.
+I will implement quotient during division, as it somehow felt like the one basic operation missing from this library.
+I would like to try logarithms but that could return a non-intal, so that could be confusing.
+
+In case of no restrictions, I'd honestly want to implement this library in C++,
+because I would then try implementing logically harder functions with the aid of the STL library that C++ provides.
+It would maintain a level of abstraction and ease of coding because simple functions like swap, copy, reverse, etc are already there to aid us.
+This assignment gave me insight into memory management and handling memory leaks. Implementing the same and more in C++ would give me logical and algorithmic insight.  
+
