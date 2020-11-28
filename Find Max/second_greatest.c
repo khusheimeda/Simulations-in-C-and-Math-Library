@@ -1,3 +1,18 @@
+// algorithm
+// using an adjacency list
+// initially create an array f log(n) + 1 list nodes, all pointing to NULL
+// iterate through the given array
+// for every number, check if the list is empty
+//  if yes, just add it there
+//  if no, that means that there is another number waiting to fight
+//      so compare those two numbers
+//      after every such fight, there's another function that iterates through and merges it-- call this function
+//      this function goes through all columns and compares i and i+1 columns
+//      if there are numbers in the ith column but (i+1)th column is empty, just copy column i to i+1
+//
+// to handle non-powers of 2
+// after all this, call the merging function one extra time
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
