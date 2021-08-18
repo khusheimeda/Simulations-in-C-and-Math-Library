@@ -1,8 +1,8 @@
 Introduction:
-An intal a long(upto 1000 digits) non-negative integer which does not have any leading zeros in its prefix.
+An intal is a long(upto 1000 digits) non-negative integer which does not have any leading zeros in its prefix.
 It is stored in a character array, i.e, as a string. 
 It is different from primitive data types supported by C because no numerical data type in C- int, float, double, long double, etc, is capable of storing and performing computations over 1000 digit long numbers.
-As we have realised from this assignment, mathematical computations involving extremely large integers can be carried out easily by implementing them as strings and doing string parsing and manipulations.
+Mathematical computations involving extremely large integers can be carried out easily by implementing them as strings and doing string parsing and manipulations.
 Since this library is implemented in C using only 3 basic predefined packages (stdio.h, stdlib.h, string.h), its efficiency is totally determined by the programmer's code.
 The programmer creating this library gets to have full control over the memory usage and management in the computations.
 This is a good reason to implement such a library in C rather than other OOP languages like Java or C++ which already have many predefined libraries to simplify the programmer's task.
@@ -93,8 +93,5 @@ It would be useful to expand intal to the category of all integers, i.e, includi
 I will implement quotient during division, as it somehow felt like the one basic operation missing from this library.
 I would like to try logarithms but that could return a non-intal, so that could be confusing.
 
-In case of no restrictions, I'd honestly want to implement this library in C++,
-because I would then try implementing logically harder functions with the aid of the STL library that C++ provides.
-It would maintain a level of abstraction and ease of coding because simple functions like swap, copy, reverse, etc are already there to aid us.
-This assignment gave me insight into memory management and handling memory leaks. Implementing the same and more in C++ would give me logical and algorithmic insight.  
+This assignment gave me insight into memory management and handling memory leaks.
 
